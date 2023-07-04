@@ -1,0 +1,24 @@
+{% include "header.html" %}
+<section>
+    <div class="bg-body-tertiary">
+    <div class="container px-4 px-lg-5">
+        <div class="container px-4 px-lg-5">
+            {% for product in products: %}
+            {% if current_user.id == product.user_id: %}
+            <div class="card" style="width: 18rem; margin-top: 20px; display: inline-block; margin-left: 60px; text-align: center; margin-bottom: 40px;border-color: black; background-color: white;" id="card">
+                <img src="{{ product.img_url }}" class="card-img-top">
+                <hr>
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center;">{{ product.name }}</h5>
+                    <p class="card-text" style="text-align: center;">Price: {{ product.price }} $</p>
+                    <a class="btn btn-success" href="{{ url_for('create_checkout_session', p_id=product.id)  }}">Buy</a>
+                    <a class="btn btn-danger" href="{{ url_for('delete', p_id=product.id)  }}">Delete</a>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+     </div>
+     </div>
+</section>
+{% include "footer.html" %}

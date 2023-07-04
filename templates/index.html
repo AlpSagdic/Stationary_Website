@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alp's Stationery</title>
+</head>
+<body>
+    {% include "header.html" %}
+    <section>
+    <div class="bg-body-tertiary">
+        <div class="container px-4 px-lg-5 back">
+        <div class="container px-4 px-lg-5">
+        {% for product in products: %}
+        <div class="card" style="width: 18rem; margin-top: 20px; display: inline-block; margin-left: 60px; text-align: center; margin-bottom: 10px;border-color: black; background-color: tertiary;" id="card">
+            <img src="{{ product.img_url }}" class="card-img-top">
+            <hr>
+        <div class="card-body" style="margin-bottom:20px;">
+        <h5 class="card-title" style="text-align: center;">{{ product.name }}</h5>
+        <p class="card-text" style="text-align: center;">Price: {{ product.price }} $</p>
+        <a class="btn btn-success" href="{{url_for('add_basket', p_id=product.id)}}">
+            Add
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 20">
+            <path fill-rule="evenodd" d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z"/>
+            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+            </svg>
+        <i class="bi bi-cart4"></i></a>
+        </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+    </div>
+    </section>
+    {% include "footer.html" %}
+</body>
+</html>
